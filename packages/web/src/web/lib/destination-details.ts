@@ -1,3 +1,5 @@
+import { extraDestinationDetails } from './extended-destinations';
+
 export type DestinationDetails = {
   tagline: string;
   introduction: string;
@@ -133,5 +135,6 @@ export const destinationDetails: Record<string, DestinationDetails> = {
     ],
     source: 'https://ntb.gov.np/manaslu-conservation-area',
     planningNote: 'Manaslu includes restricted trekking areas. Arrange current restricted-area and conservation permits and required guiding arrangements through an authorized agency. Confirm eligibility, altitude planning, and pass conditions before travelling.'
-  }
+  },
+  ...extraDestinationDetails,
 };

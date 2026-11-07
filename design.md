@@ -1,8 +1,18 @@
-# nepguide — Design
+# nepguide — Alpine Dark design
+
+## Latest approved direction (overrides earlier palette notes)
+Use deep charcoal green #17211C for backgrounds, forest #24352B for navbar/cards, sage #789078 for secondary accents, warm cream #D8D2C4 for text, amber #E9A857 for buttons/highlights. No warm-light destination panels. Poppins throughout, slightly larger and semibold body text; bold display titles. Spacious layout, pill buttons, a polished floating rounded navbar, minimal decorative divider rules, subtle dual-shadow neumorphism on dark cards with gentle lift hover. Natural real trekking photography only. Low-amplitude image parallax with reduced-motion support.
+
+Seventeen destinations including independent Jiri town/foothill visit and Everest trek; never a combined Jiri–Everest product. Destination cards only discover destinations, no Add to trip controls. A distinct `/plan` multi-destination planner presents labeled choices, estimates and email/WhatsApp handoff. Guides remain exclusively on `/guides`, displaying full names without initials, years of experience, and USD daily guide fees. Ample card padding and inter-section spacing. All previously requested pickup/enquiry/payment-logo features remain in scope without APIs or backend.
 
 Web-only static Nepali trekking guide directory with an editorial Himalayan identity. No database, sign-in, booking system, or new APIs. Mobile and desktop scaffolding remain unused.
 
 ## Palette and typography
+- Latest direction: retain blue brand/header/guide directory, but use warm ivory #faf6ef, sand #efe4d4, terracotta #a76642 and deep brown #40362e in destination discovery, trip planner and enquiry surfaces. Warm cards have generous scenic images, duration badges and separate selection controls.
+- Homepage hero is a real photograph of a backpacking man in the Himalayas. A seventeen-destination catalogue includes city, wildlife, lake and trekking journeys. Do not claim photography ratings or fixed travel times.
+- New `/plan` page allows one or multiple destination selections, Kathmandu pickup, preferred date, travellers and notes. Show provisional Kathmandu-to-Kathmandu day ranges with acclimatization; multi-stop totals are conservative sums of independent journeys, not an optimized route. Preserve selection via URL, not a backend.
+- Every destination has a Kathmandu pickup selector and prefilled WhatsApp CTA to +9779866449988. Trip plans and price/destination enquiry forms open email composers addressed to amrit.git.np@gmail.com. Nothing sends automatically. No new APIs, database, booking or payment processing.
+- Payment acceptance logos (Visa, Mastercard, American Express, Stripe) are decorative brand icons, no checkout. Place No hidden charges beside transparent quote messaging; confirm inclusions/exclusions through contact.
 - White-blue background #f1f7fc; card #fbfdff; foreground #233b54.
 - Primary blue #244f78; navy contact/footer #183b5c; sky-blue accent #d5eaff; border #d7e3ec.
 - Legacy CSS tokens `--forest` and `--lime` now represent primary blue and sky-blue, not green.

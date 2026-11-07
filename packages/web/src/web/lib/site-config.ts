@@ -1,4 +1,5 @@
 // Edit this file to publish your real guides and contact accounts.
+import { extraDestinations } from './extended-destinations';
 // Phone numbers: international format, e.g. +977 followed by the real number.
 // Set sample to false only after replacing the sample profile with real details.
 export type Guide = {
@@ -9,11 +10,12 @@ export type Guide = {
 
 export const siteConfig = {
   name: 'nepguide',
+  whatsappNumber: '+9779866449988',
   contacts: {
-    whatsapp: '', // Paste your https://wa.me/... link
+    whatsapp: 'https://wa.me/9779866449988',
     facebook: '', // Paste your Facebook account URL
     instagram: '', // Paste your Instagram account URL
-    email: '', // Paste your email address (not a mailto link)
+    email: 'amrit.git.np@gmail.com',
   },
 };
 
@@ -43,6 +45,7 @@ export const destinations: Destination[] = [
   { region: 'Poon Hill', slug: 'poon-hill', guideRegion: 'Annapurna', subtitle: 'SUNRISE ABOVE THE CLOUDS', image: '/images/poon-hill-sunrise.jpg', description: 'Welcome the morning with sweeping views of Annapurna and Dhaulagiri. Walk through rhododendron forests and the villages around Ghorepani on a memorable foothill journey.', highlights: ['Sunrise panoramas', 'Ghorepani trails', 'Forest & village life'] },
   { region: 'Mardi Himal', slug: 'mardi-himal', guideRegion: 'Annapurna', subtitle: 'ALONG THE HIGH RIDGE', image: '/images/mardi-himal-ridge.jpg', description: 'Follow forest paths onto an open mountain ridge, with Machhapuchhre rising ahead. Mardi Himal brings close-up Himalayan views and a changing landscape above the Pokhara hills.', highlights: ['Ridge walks', 'Machhapuchhre views', 'Forest to alpine trails'] },
   { region: 'Manaslu', slug: 'manaslu', subtitle: 'THE MOUNTAIN OF THE SPIRIT', image: '/images/manaslu-mountain.jpg', description: 'Trace the Budhi Gandaki valley into mountain villages and dramatic high country. Discover Tibetan-influenced culture and the Manaslu Circuit, with careful planning for permits and altitude.', highlights: ['Mountain communities', 'Manaslu Circuit', 'High-pass landscapes'] },
+  ...extraDestinations,
 ];
 
 export const guides: Guide[] = [
