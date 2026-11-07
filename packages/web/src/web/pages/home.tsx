@@ -16,7 +16,7 @@ export default function Home() {
     const section = location === '/home' ? 'home' : location.slice(1);
     document.getElementById(section)?.scrollIntoView({ behavior: 'instant', block: 'start' });
     const titles: Record<string, string> = { '/home': 'Explore Nepal with a local', '/how-it-works': 'How it works', '/contact': 'Contact us' };
-    document.title = `nepguide — ${titles[location] ?? 'Explore Nepal with a local'}`;
+    document.title = `treknepal — ${titles[location] ?? 'Explore Nepal with a local'}`;
   }, [location]);
   return <>
     <SiteHeader/>
