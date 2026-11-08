@@ -1,6 +1,6 @@
 export type TripDuration = { min: number; max: number; itinerary: string; source: string; category: 'Trekking' | 'Culture' | 'Wildlife' | 'Lakes & villages' };
 export type PackageTier = 'best' | 'luxury';
-export type TransportOption = 'Private taxi' | 'Domestic flight';
+export type TransportOption = 'Private taxi' | 'Tourist bus' | 'Domestic flight';
 export type AccommodationOption = 'Comfort hotels' | 'Best available hotels';
 
 export type DestinationPackage = {
@@ -11,6 +11,16 @@ export type DestinationPackage = {
   description: string;
   inclusions: string[];
 };
+
+export function transportPriceMultiplier(transport: TransportOption) {
+  if (transport === 'Tourist bus') return 0.82;
+  if (transport === 'Domestic flight') return 1.28;
+  return 1;
+}
+
+export function accommodationPriceMultiplier(accommodation: AccommodationOption) {
+  return accommodation === 'Best available hotels' ? 1.32 : 1;
+}
 
 // Planning ranges, not schedules. Each journey starts and finishes in Kathmandu.
 export const tripDurations: Record<string, TripDuration> = {
