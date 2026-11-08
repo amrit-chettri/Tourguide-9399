@@ -5,7 +5,7 @@ import { FaWhatsapp, FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { siteConfig } from '../lib/site-config';
 
 function Logo({ light = false }: { light?: boolean }) {
-  return <Link to="/home" className={`logo ${light ? 'light' : ''}`} aria-label="nepguide home"><Mountain size={32} strokeWidth={1.5}/><span>nep<span className="logo-thin">guide</span><i>.</i></span></Link>;
+  return <Link to="/home" className={`logo ${light ? 'light' : ''}`} aria-label="True Guide Nepal home"><Mountain size={32} strokeWidth={1.5}/><span>True <span className="logo-thin">Guide Nepal</span><i>.</i></span></Link>;
 }
 
 export function SiteHeader() {
@@ -30,5 +30,5 @@ export function ContactSection() {
 }
 
 export function SiteFooter() {
-  return <footer className="site-footer"><div className="container footer-main"><Logo light/><p>Local hearts. Himalayan adventures.</p><span>© {new Date().getFullYear()} nepguide</span></div><div className="container footer-details"><div className="payment-marks"><span>We accept</span><span className="payment-visa" aria-label="Visa" role="img">VISA</span><span className="payment-mastercard" aria-label="Mastercard" role="img"><i/><i/><b>mastercard</b></span><span className="payment-amex" aria-label="American Express" role="img">AMERICAN<br/>EXPRESS</span><span className="payment-stripe" aria-label="Stripe" role="img">stripe</span></div><p>Enquiries only here. No online payment or booking.</p><Link to="/enquiry" className="text-link">Ask about prices<ArrowUpRight size={15}/></Link></div></footer>;
+  return <footer className="site-footer"><div className="container footer-main"><Logo light/><p>Local hearts. Himalayan adventures.</p><span>© {new Date().getFullYear()} True Guide Nepal</span></div><div className="container footer-details"><div className="payment-marks"><span>We accept</span><span className="payment-visa" aria-label="Visa" role="img">VISA</span><span className="payment-mastercard" aria-label="Mastercard" role="img"><i/><i/><b>mastercard</b></span><span className="payment-amex" aria-label="American Express" role="img">AMERICAN<br/>EXPRESS</span><span className="payment-stripe" aria-label="Stripe" role="img">stripe</span></div><p>Enquiries only here. No online payment or booking.</p><Link to="/enquiry" className="text-link">Ask about prices<ArrowUpRight size={15}/></Link></div></footer>;
 }

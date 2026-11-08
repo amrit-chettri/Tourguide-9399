@@ -15,7 +15,7 @@ export default function GuidesPage() {
   const [notice, setNotice] = useState('');
   const dialog = useRef<HTMLDialogElement>(null);
   useEffect(() => {
-    document.title = 'nepguide — Find a trekking guide';
+    document.title = 'True Guide Nepal — Find a trekking guide';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
   useEffect(() => { if (notice) dialog.current?.showModal(); }, [notice]);

@@ -14,7 +14,7 @@ export default function DestinationPage() {
   const destination = destinations.find(item => item.slug === slug);
   const details = destination ? destinationDetails[destination.region] : undefined;
   useEffect(() => {
-    document.title = `nepguide — Explore ${destination?.region ?? 'Nepal'}`;
+    document.title = `True Guide Nepal — Explore ${destination?.region ?? 'Nepal'}`;
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [slug, destination?.region]);
   if (!destination || !details) return <Redirect to="/home" replace/>;

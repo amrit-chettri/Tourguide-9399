@@ -9,7 +9,7 @@ export type Guide = {
 };
 
 export const siteConfig = {
-  name: 'nepguide',
+  name: 'True Guide Nepal',
   whatsappNumber: '+9779866449988',
   contacts: {
     whatsapp: 'https://wa.me/9779866449988',
