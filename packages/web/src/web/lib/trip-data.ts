@@ -1,4 +1,16 @@
 export type TripDuration = { min: number; max: number; itinerary: string; source: string; category: 'Trekking' | 'Culture' | 'Wildlife' | 'Lakes & villages' };
+export type PackageTier = 'best' | 'luxury';
+export type TransportOption = 'Private taxi' | 'Domestic flight';
+export type AccommodationOption = 'Comfort hotels' | 'Best available hotels';
+
+export type DestinationPackage = {
+  tier: PackageTier;
+  name: string;
+  priceMin: number;
+  priceMax: number;
+  description: string;
+  inclusions: string[];
+};
 
 // Planning ranges, not schedules. Each journey starts and finishes in Kathmandu.
 export const tripDurations: Record<string, TripDuration> = {
@@ -32,3 +44,55 @@ export function estimateTrip(slugs: string[]) {
 }
 
 export const estimateNotice = 'Provisional Kathmandu-to-Kathmandu planning ranges include access travel and acclimatization where relevant. Multi-destination totals add each independent return journey; they are not an optimized connected itinerary. Shared transfers may shorten a plan; weather, flights, road access, permits or extra rest may extend it. We will confirm the route and timing with you.';
+
+const packageNames: Record<string, string> = {
+  everest: 'Everest Base Camp essentials',
+  annapurna: 'Annapurna mountain escape',
+  langtang: 'Langtang valley discovery',
+  'poon-hill': 'Poon Hill sunrise escape',
+  'mardi-himal': 'Mardi ridge adventure',
+  manaslu: 'Manaslu circuit journey',
+  kathmandu: 'Kathmandu heritage weekend',
+  chitwan: 'Chitwan jungle retreat',
+  pokhara: 'Pokhara lake escape',
+  sikles: 'Sikles village experience',
+  'upper-mustang': 'Upper Mustang explorer',
+  'limi-valley': 'Limi Valley expedition',
+  'nar-phu': 'Nar Phu hidden valleys',
+  rara: 'Rara Lake getaway',
+  'tsum-valley': 'Tsum Valley culture trek',
+  'upper-dolpo': 'Upper Dolpo expedition',
+  jiri: 'Jiri foothills escape',
+};
+
+const categoryInclusions: Record<TripDuration['category'], string[]> = {
+  Trekking: ['Airport pickup and drop', 'Licensed trekking guide and permits', 'Breakfast, lunch and dinner on trek', 'Trek briefing, safety support and adventure activities'],
+  Culture: ['Airport pickup and drop', 'Comfortable hotel stay', 'Daily breakfast and local food experiences', 'Private heritage sightseeing and cultural activities'],
+  Wildlife: ['Airport pickup and drop', 'Jungle lodge or hotel stay', 'Breakfast, lunch and dinner', 'Guided safari, nature walk and adventure activities'],
+  'Lakes & villages': ['Airport pickup and drop', 'Hotel and village lodge stays', 'Breakfast and selected local meals', 'Guided walks, viewpoints and adventure activities'],
+};
+
+export function destinationPackages(slug: string): DestinationPackage[] {
+  const duration = tripDurations[slug];
+  if (!duration) return [];
+  const base = Math.max(220, duration.min * 75);
+  const inclusions = categoryInclusions[duration.category];
+  return [
+    {
+      tier: 'best',
+      name: packageNames[slug] ?? `${duration.category} best value`,
+      priceMin: Math.round(base / 10) * 10,
+      priceMax: Math.round((base * 1.28) / 10) * 10,
+      description: 'The best price for a well-organised Nepal journey.',
+      inclusions,
+    },
+    {
+      tier: 'luxury',
+      name: `${packageNames[slug] ?? duration.category} luxury`,
+      priceMin: Math.round((base * 2.15) / 10) * 10,
+      priceMax: Math.round((base * 2.8) / 10) * 10,
+      description: 'A slower, more comfortable journey with premium stays and private service.',
+      inclusions: ['Everything in Best value', 'Private vehicle or scenic domestic flights', 'Best available hotels and premium lodges', 'Private guide, flexible pacing and curated experiences'],
+    },
+  ];
+}
