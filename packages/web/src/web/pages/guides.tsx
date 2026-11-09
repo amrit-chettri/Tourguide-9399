@@ -4,6 +4,7 @@ import { ArrowLeft, Check, Compass, Mountain, X } from 'lucide-react';
 import { SiteHeader, ContactSection, SiteFooter } from '../components/site-layout';
 import { GuideCard } from '../components/guide-card';
 import { guides } from '../lib/site-config';
+import { usePageSEO } from '../hooks/use-page-seo';
 
 export default function GuidesPage() {
   const [, navigate] = useLocation();
@@ -14,8 +15,12 @@ export default function GuidesPage() {
   const filtered = guides.filter(guide => region === 'All regions' || guide.region === region);
   const [notice, setNotice] = useState('');
   const dialog = useRef<HTMLDialogElement>(null);
+  usePageSEO(
+    'Local Trekking Guides in Nepal | True Guide Nepal',
+    'Meet Nepali trekking guides, explore their experience and daily fees, and connect directly for your Himalayan adventure.',
+    '/guides',
+  );
   useEffect(() => {
-    document.title = 'True Guide Nepal — Find a trekking guide';
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
   useEffect(() => { if (notice) dialog.current?.showModal(); }, [notice]);

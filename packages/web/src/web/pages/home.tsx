@@ -5,6 +5,7 @@ import { SiteHeader, ContactSection, SiteFooter } from '../components/site-layou
 import { destinations } from '../lib/site-config';
 import { durationText, tripDurations } from '../lib/trip-data';
 import { useParallax } from '../hooks/use-parallax';
+import { usePageSEO } from '../hooks/use-page-seo';
 
 export default function Home() {
   const [location] = useLocation();
@@ -12,11 +13,20 @@ export default function Home() {
   const [category, setCategory] = useState('All journeys');
   const categories = ['All journeys', 'Trekking', 'Culture', 'Wildlife', 'Lakes & villages'];
   const visible = destinations.filter(destination => category === 'All journeys' || tripDurations[destination.slug].category === category);
+  const titles: Record<string, string> = {
+    '/home': 'True Guide Nepal | Local Trekking Guides & Nepal Journeys',
+    '/how-it-works': 'How It Works | True Guide Nepal',
+    '/contact': 'Contact True Guide Nepal',
+  };
+  const descriptions: Record<string, string> = {
+    '/home': 'Explore Nepal with local trekking guides. Discover Himalayan destinations, learn about your options, and plan a journey with True Guide Nepal.',
+    '/how-it-works': 'Learn how to explore Nepal destinations, connect with local guides, and plan a trekking journey with True Guide Nepal.',
+    '/contact': 'Contact True Guide Nepal to ask about trekking destinations, local guides, trip planning, and your Himalayan journey.',
+  };
+  usePageSEO(titles[location] ?? titles['/home'], descriptions[location] ?? descriptions['/home'], location);
   useEffect(() => {
     const section = location === '/home' ? 'home' : location.slice(1);
     document.getElementById(section)?.scrollIntoView({ behavior: 'instant', block: 'start' });
-    const titles: Record<string, string> = { '/home': 'Explore Nepal with a local', '/how-it-works': 'How it works', '/contact': 'Contact us' };
-    document.title = `True Guide Nepal — ${titles[location] ?? 'Explore Nepal with a local'}`;
   }, [location]);
   return <>
     <SiteHeader/>

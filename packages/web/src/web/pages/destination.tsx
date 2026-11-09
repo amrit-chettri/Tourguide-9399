@@ -7,14 +7,17 @@ import { destinationDetails } from '../lib/destination-details';
 import { TripPickup } from '../components/trip-pickup';
 import { durationText } from '../lib/trip-data';
 import { useParallax } from '../hooks/use-parallax';
+import { usePageSEO } from '../hooks/use-page-seo';
 
 export default function DestinationPage() {
   const { slug } = useParams<{ slug: string }>();
   const imageRef = useParallax();
   const destination = destinations.find(item => item.slug === slug);
   const details = destination ? destinationDetails[destination.region] : undefined;
+  const title = `Explore ${destination?.region ?? 'Nepal'} | Local Guide | True Guide Nepal`;
+  const description = details?.introduction ?? 'Explore Nepal destinations and plan a Himalayan journey with True Guide Nepal.';
+  usePageSEO(title, description, `/destinations/${slug ?? ''}`);
   useEffect(() => {
-    document.title = `True Guide Nepal — Explore ${destination?.region ?? 'Nepal'}`;
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [slug, destination?.region]);
   if (!destination || !details) return <Redirect to="/home" replace/>;

@@ -6,6 +6,7 @@ import { SiteHeader, SiteFooter, ContactSection } from '../components/site-layou
 import { destinations, siteConfig } from '../lib/site-config';
 import { accommodationPriceMultiplier, destinationPackages, durationText, estimateTrip, estimateNotice, tripDurations, transportPriceMultiplier, type AccommodationOption, type PackageTier, type TransportOption } from '../lib/trip-data';
 import { businessWhatsApp, enquiryMail } from '../lib/contact-links';
+import { usePageSEO } from '../hooks/use-page-seo';
 
 export default function PlanPage() {
   const search = useSearch();
@@ -26,13 +27,18 @@ export default function PlanPage() {
   const validate = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!fields.current?.reportValidity()) event.preventDefault();
   };
+  usePageSEO(
+    'Plan a Nepal Trekking Trip | True Guide Nepal',
+    'Choose Nepal destinations and shape a trekking itinerary around your interests. Ask True Guide Nepal about routes, transport, stays, and estimates.',
+    '/plan',
+  );
   const total = estimateTrip(selectedSlugs);
   const transportMultiplier = transportPriceMultiplier(transport);
   const accommodationMultiplier = accommodationPriceMultiplier(accommodation);
   const packageMultiplier = transportMultiplier * accommodationMultiplier;
   const packageTotal = Math.round(selected.reduce((sum, destination) => sum + (destinationPackages(destination.slug).find(item => item.tier === packageTier)?.priceMin ?? 0), 0) * packageMultiplier / 10) * 10;
   const packageMax = Math.round(selected.reduce((sum, destination) => sum + (destinationPackages(destination.slug).find(item => item.tier === packageTier)?.priceMax ?? 0), 0) * packageMultiplier / 10) * 10;
-  useEffect(() => { document.title = 'True Guide Nepal — Plan your journey'; window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, []);
   const toggle = (slug: string) => {
     const next = selectedSlugs.includes(slug) ? selectedSlugs.filter(item => item !== slug) : [...selectedSlugs, slug];
     navigate(next.length ? `/plan?destinations=${next.join(',')}` : '/plan', { replace: true });
