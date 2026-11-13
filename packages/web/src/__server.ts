@@ -13,7 +13,7 @@ const server = Bun.serve({
       return app.fetch(request);
     }
 
-    const filePath = getStaticFilePath(url.pathname);
+    const filePath = getStaticFilePath(url.pathname);    
     const file = Bun.file(filePath);
 
     if (await file.exists()) {
@@ -24,14 +24,14 @@ const server = Bun.serve({
     if (await index.exists()) {
       return new Response(index, {
         headers: { "Content-Type": "text/html; charset=utf-8" },
-      });
+      }); 
     }
 
     return new Response("Build output not found. Run `bun run build` first.", {
       status: 500,
       headers: { "Content-Type": "text/plain; charset=utf-8" },
     });
-  },
+  },    
 });
 
 console.log(`Web server listening on http://localhost:${server.port}`);

@@ -15,7 +15,7 @@ export const siteConfig = {
     whatsapp: 'https://wa.me/9779866449988',
     facebook: '', // Paste your Facebook account URL
     instagram: '', // Paste your Instagram account URL
-    email: 'amrit.git.np@gmail.com',
+    email: 'trueguidenepal@gmail.com',
   },
 };
 
