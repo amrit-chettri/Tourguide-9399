@@ -27,6 +27,7 @@
 .hero-actions .hero-button,.hero-actions .hero-button:hover{background:#fff;color:var(--background)}
 .hero-small>span:first-child svg{color:#22a447}
 .hero-small>span:last-child svg{color:#3b82f6}
+@media(max-width:800px){.menu-button{background:transparent}}
 body{color:#111}
 .nav-wrap,.site-header nav.open,.destination-card,.guide-card,.destination-cta,.contact-section,.site-footer,.region-routes-grid article,.pickup-panel,.plan-summary,.enquiry-form,.destination-choice{color:var(--foreground)}
 .back-link,.section-heading>p,.how-intro>p:last-of-type,.guide-page-description,.page-intro>p:last-child,.region-story p:not(.eyebrow),.region-section-title>p:last-child:not(.eyebrow),.region-planning-note,.region-guide-cta p:last-child,.pickup-description,.planner-heading p,.enquiry-aside>p{color:#111}
