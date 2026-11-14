@@ -13,8 +13,8 @@ export const siteConfig = {
   whatsappNumber: '+9779866449988',
   contacts: {
     whatsapp: 'https://wa.me/9779866449988',
-    facebook: '', // Paste your Facebook account URL
-    instagram: '', // Paste your Instagram account URL
+    facebook: 'https://www.facebook.com/profile.php?id=61596417215395', 
+    instagram: 'https://www.instagram.com/true_guide_nepal?rpxt=OThiOXpyYW1xa3Jr', 
     email: 'trueguidenepal@gmail.com',
   },
 };
